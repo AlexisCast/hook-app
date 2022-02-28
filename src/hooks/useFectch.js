@@ -24,7 +24,7 @@ export const useFectch = (url) => {
 		fetch(url)
 			.then((resp) => resp.json())
 			.then((data) => {
-				setTimeout(() => {
+				// setTimeout(() => {
 					if (isMounted.current) {
 						setState({
 							loading: false,
@@ -34,7 +34,7 @@ export const useFectch = (url) => {
 					}else{
 						console.log('SetState no se llamo.')
 					}
-				}, 4000);
+				// }, 4000);
 			});
 	}, [url]);
 	return state;
