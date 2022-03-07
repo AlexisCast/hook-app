@@ -25,16 +25,24 @@ export const useFectch = (url) => {
 			.then((resp) => resp.json())
 			.then((data) => {
 				// setTimeout(() => {
-					if (isMounted.current) {
-						setState({
-							loading: false,
-							error: null,
-							data,
-						});
-					}else{
+				if (isMounted.current) {
+					setState({
+						loading: false,
+						error: null,
+						data,
+					});
+				}
+				/* else{
 						console.log('SetState no se llamo.')
-					}
+					} */
 				// }, 4000);
+			})
+			.catch(() => {
+				setState({
+					data: null,
+					loading: false,
+					error: "No se pudo cargar la info",
+				});
 			});
 	}, [url]);
 	return state;
